@@ -9,7 +9,9 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class MainActivity extends FragmentActivity {
+import cleber.roberto.uno.conceitofragments.custom.interfaces.ToolBarListner;
+
+public class MainActivity extends FragmentActivity implements ToolbarFragment.ToolbarListener{
 
 
     @Override
@@ -18,5 +20,11 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         //Conceitos que podem ser inseridos no App
+    }
+
+    @Override
+    public void onBttonClick(int tamanhofonte, String texto) {
+        TextoFragment fragmento = (TextoFragment) getSupportFragmentManager().findFragmentById(R.id.frgTexto);
+        fragmento.trocarPropriedadesDoTexto(tamanhofonte, texto);
     }
 }

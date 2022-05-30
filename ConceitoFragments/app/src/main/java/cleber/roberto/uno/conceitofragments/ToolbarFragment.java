@@ -60,6 +60,8 @@ public class ToolbarFragment extends Fragment implements SeekBar.OnSeekBarChange
             }
         });
 
+        skbFormatarTexto.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) this);
+
         return toolBarLayoutinflated;
     }
 
@@ -72,7 +74,7 @@ public class ToolbarFragment extends Fragment implements SeekBar.OnSeekBarChange
 
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
-            + "Obrigatório emlementar a interface ToolbarListener");
+            + "Obrigatório implementar a interface ToolbarListener");
         }
 
     }
@@ -84,7 +86,7 @@ public class ToolbarFragment extends Fragment implements SeekBar.OnSeekBarChange
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+        TEXT_SIZE = progress;
     }
 
     @Override
