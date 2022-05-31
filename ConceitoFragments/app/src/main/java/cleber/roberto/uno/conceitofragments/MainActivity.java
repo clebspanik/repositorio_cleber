@@ -20,6 +20,8 @@ public class MainActivity extends FragmentActivity implements ToolbarFragment.To
         setContentView(R.layout.activity_main);
 
         //Conceitos que podem ser inseridos no App
+
+        
     }
 
     @Override

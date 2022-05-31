@@ -1,12 +1,16 @@
 package formacao.desenvolvedores.tecnologia.uno.conceitointent;
 
+import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtPergunta;
     private ImageButton imgBtnLimpar;
     private String pergunta;
+    private ActivityResultLauncher<Intent> activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
-
         btnPergunta      = findViewById(R.id.btnPergunta);
         edtPergunta      = findViewById(R.id.edtPergunta);
         tvExibirResposta = findViewById(R.id.tvExibirResposta);
@@ -50,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         tvExibirResposta.setVisibility(View.INVISIBLE);
         tvAnterior.setVisibility(View.INVISIBLE);
-
 
 
         btnPergunta.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(irresposta, REQUEST_CODE);
 
                 } else {
+
+                    OpenActivityForResult();
 
                     Toast.makeText(MainActivity.this, "Insira uma pergunta.", Toast.LENGTH_SHORT).show();
 
@@ -117,17 +121,50 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
+    }
+
+    private void OpenActivityForResult(){
+        //Instanciar um objeto com construtor "Intent" com dois argumentos - contexo e classe;
+
+      Intent intent = new Intent (MainActivity.this, RespostaActivity.class);
+        String myString = edtPergunta.getText().toString();
+        intent.putExtra("Pergunta", myString);
+        intent.putExtra( "Pergunta", edtPergunta.getText().toString());
+
+        activityResultLauncher.launch(intent);
+
+        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            Intent data = result.getData();
+                            tvExibirResposta.setText(data.getExtras().toString());
+
+                        }
+                    }
+                });
+
+
+
     }
 
 
 
-} //fim MainActivity
+
+
+}
+
+
+
+//fim MainActivity
 
 
 
 
 
-
+/*https://developer.android.com/training/basics/intents/result -> DOCUMENTAÇÃO do APP*/
 
 /*com Bundle:
 * Bundle extramain = getIntent().getExtras();
