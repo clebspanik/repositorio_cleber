@@ -10,14 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import formacao.desenvolvedores.tecnologia.uno.conceitointent.utils.app.UtilsApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton imgBtnLimpar;
     private String pergunta;
     private ActivityResultLauncher<Intent> activityResultLauncher;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +99,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        UtilsApp utilsApp = new UtilsApp();
+        Log.d(TAG,"Valor convertido de tipos primitivos short para int:"
+        + utilsApp.convertToInt(5.1987));
+
+        byte b = -27;
+        Log.d(TAG,"Valor convertido de tipos primitivos short para int:"
+            + utilsApp.convertToInt(b));
+
+        long valorLong = 87262;
+        Log.d(TAG,"Valor convertido de tipos primitivos long para int:"
+                + utilsApp.convertToInt(valorLong));
+
+
 
     }//fim do onCreate;
 
@@ -124,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
     private void OpenActivityForResult(){
         //Instanciar um objeto com construtor "Intent" com dois argumentos - contexo e classe;
 
@@ -151,10 +173,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
 }
+
+
+
+
+
+
+
 
 
 

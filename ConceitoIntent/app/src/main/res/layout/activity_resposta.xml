@@ -50,4 +50,12 @@
         app:layout_constraintStart_toEndOf="@+id/edtResposta"
         app:srcCompat="@drawable/ic_clear_24" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="239dp"
+        android:layout_height="170dp"
+        app:srcCompat="@drawable/ste1"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="-13dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
