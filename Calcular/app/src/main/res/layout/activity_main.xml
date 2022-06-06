@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/AppCalcular"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -10,26 +11,26 @@
         android:id="@+id/tvOpcao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="Selecione a operação Matemática"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spiOpcoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvOpcao"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvOpcao" />
 
     <TextView
         android:id="@+id/tvOperacao"
@@ -48,10 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:textAlignment="center"
         android:ems="10"
         android:hint="valor"
         android:inputType="number"
+        android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/tvOperacao"
         app:layout_constraintTop_toBottomOf="@+id/spiOpcoes" />
 
@@ -62,14 +63,13 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/edtOperando1"
         app:layout_constraintStart_toStartOf="@+id/edtOperando1"
-        app:layout_constraintTop_toBottomOf="@+id/edtOperando1"
-        app:srcCompat="@drawable/soma" />
+        app:layout_constraintTop_toBottomOf="@+id/edtOperando1" />
 
     <EditText
         android:id="@+id/edtOperando2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="valor"
         android:inputType="number"
@@ -77,23 +77,24 @@
         app:layout_constraintEnd_toEndOf="@+id/edtOperando1"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edtOperando1"
-        app:layout_constraintTop_toBottomOf="@+id/imgOperacao" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/edtOperando2"
-        app:layout_constraintStart_toStartOf="@+id/edtOperando2"
-        app:layout_constraintTop_toBottomOf="@+id/edtOperando2"
-        app:srcCompat="@drawable/soma" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtOperando1"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="@+id/edtOperando1"
+        app:layout_constraintTop_toBottomOf="@+id/edtOperando1"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <TextView
         android:id="@+id/tvResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="240dp"
         android:hint="Resultado da operação matemática"
         app:layout_constraintEnd_toEndOf="@+id/edtOperando2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -104,16 +105,22 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="CALCULAR"
-        tools:layout_editor_absoluteX="182dp"
-        tools:layout_editor_absoluteY="356dp" />
+        app:layout_constraintEnd_toEndOf="@+id/edtOperando2"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="@+id/edtOperando2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_add_24"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="173dp" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtOperando2"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="@+id/edtOperando2"
+        app:layout_constraintTop_toBottomOf="@+id/edtOperando2"
+        app:srcCompat="@drawable/faace18443481df81e244631d82dc799" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
