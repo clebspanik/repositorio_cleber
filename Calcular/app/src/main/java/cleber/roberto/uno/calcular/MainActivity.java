@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,12 +20,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static final String MULTIPLICAR   = "Multiplicar";
     public static final String SOMAR         = "Somar";
     public static final String SUBTRAIR      = "Subtrair";
+    public static final String RAIZ          = "RAIZ";
     private Spinner spiOpcoes;
     private EditText edtOperando1, edtOperando2;
     private TextView tvOpcao,tvOperacao, tvResultado;
     private Button btnCalcular;
     private ImageView imgOperacao, imgOperacao2;
-
+    private ImageButton btnLimpar;
 
 
     @Override
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         btnCalcular = findViewById(R.id.btnCalcular);
         imgOperacao = findViewById(R.id.imgOperacao);
         imgOperacao2 = findViewById(R.id.imgOperacao2);
+        btnLimpar    = findViewById(R.id.btnLimpar);
 
         ArrayAdapter<String> adapterOpcoes_Matematicas = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.operacoes_matematicas));
@@ -100,6 +103,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         });
 
 
+        btnLimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtOperando1.setText("");
+                edtOperando2.setText("");
+                tvResultado.setText("");
+            }
+        });
+
+
     }
 
 
@@ -108,9 +121,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         imgOperacao.setVisibility(View.VISIBLE);
 
+        if (adapterView.getItemAtPosition(i).toString().isEmpty()) {
+            imgOperacao.setVisibility(View.INVISIBLE);
+            edtOperando1.setHint("Insira o valor");
+            edtOperando2.setHint("Insira o valor");
+            tvResultado.setHint("Resultado");
+        }
 
-
-        if (adapterView.getItemAtPosition(i).toString().equals(DIVIDIR)) {
+        else if (adapterView.getItemAtPosition(i).toString().equals(DIVIDIR)) {
             imgOperacao.setImageDrawable(getResources().getDrawable(R.drawable.divisao,getTheme()));
             edtOperando1.setHint("Dividendo");
             edtOperando2.setHint("Divisor");
@@ -128,14 +146,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             imgOperacao.setImageDrawable(getResources().getDrawable(R.drawable.soma,getTheme()));
             edtOperando1.setHint("Parcela");
             edtOperando2.setHint("Parcela");
-            tvResultado.setHint("total");
+            tvResultado.setHint("Total");
         }
 
         else if (adapterView.getItemAtPosition(i).toString().equals(SUBTRAIR)) {
             imgOperacao.setImageDrawable(getResources().getDrawable(R.drawable.subtracao,getTheme()));
-            edtOperando1.setHint("minuendo");
-            edtOperando2.setHint("subtrendo");
-            tvResultado.setHint("diferença");
+            edtOperando1.setHint("Minuendo");
+            edtOperando2.setHint("Subtrendo");
+            tvResultado.setHint("Diferença");
+        }
+
+        else if (adapterView.getItemAtPosition(i).toString().equals(RAIZ)) {
+            imgOperacao.setImageDrawable(getResources().getDrawable(R.drawable.raiz,getTheme()));
+            edtOperando1.setHint("");
+            edtOperando2.setHint("");
+            tvResultado.setHint("");
         }
 
 
@@ -196,3 +221,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 }
+
+
+//Setoncliklistener - chama o método do botão.
