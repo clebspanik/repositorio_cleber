@@ -20,13 +20,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static final String MULTIPLICAR   = "Multiplicar";
     public static final String SOMAR         = "Somar";
     public static final String SUBTRAIR      = "Subtrair";
-    public static final String RAIZ          = "RAIZ";
+    public static final String RAIZ          = "Raíz";
+    public static final String POTENCIADE10  = "Potência de 10";
+    public static final String POTENCIACAO   = "Potenciação";
+    public static final String LOGARITMO     = "Logaritmo";
+
     private Spinner spiOpcoes;
     private EditText edtOperando1, edtOperando2;
     private TextView tvOpcao,tvOperacao, tvResultado;
     private Button btnCalcular;
     private ImageView imgOperacao, imgOperacao2;
     private ImageButton btnLimpar;
+
+    public int ZERO = 0;
+    public int DEZ = 10;
 
 
     @Override
@@ -64,39 +71,38 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 //Pega a opção selecionda no spinner
                 String opcaoSelecionada = spiOpcoes.getSelectedItem().toString();
-                if(opcaoSelecionada.isEmpty()) {
+                if (opcaoSelecionada.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Por favor, insira um valor!", Toast.LENGTH_SHORT).show();
 
-                }    else if (edtOperando1.getText().toString().isEmpty()) {
+                } else if (edtOperando1.getText().toString().isEmpty()) {
                     Toast.makeText(MainActivity.this, "Por favor, insira um valor", Toast.LENGTH_SHORT).show();
 
-                }    else if (edtOperando2.getText().toString().isEmpty()) {
+                } else if (edtOperando2.getText().toString().isEmpty()) {
 
-                        Toast.makeText(MainActivity.this, "Por favor, insira uma operação", Toast.LENGTH_SHORT).show();
-                }
-
-
-                else if (opcaoSelecionada.equals(DIVIDIR)) {
+                    Toast.makeText(MainActivity.this, "Por favor, insira uma operação", Toast.LENGTH_SHORT).show();
+                } else if (opcaoSelecionada.equals(DIVIDIR)) {
                     tvResultado.setText(dividir());
-                }
 
-                else if (opcaoSelecionada.equals(MULTIPLICAR)) {
+                } else if (opcaoSelecionada.equals(MULTIPLICAR)) {
                     tvResultado.setText(multiplicar());
-                }
 
-                else if (opcaoSelecionada.equals(SOMAR)) {
-                    //if(validarTermosVazioas()); {
+                } else if (opcaoSelecionada.equals(SOMAR)) {
+                    //if(validarTermosVazios()); {
                     tvResultado.setText(somar());
                     //} else {
                     //preencha a parcela
                     //adtOp1.requestFocus();
-                    }
-
-                else if (opcaoSelecionada.equals(SUBTRAIR)) {
+                } else if (opcaoSelecionada.equals(SUBTRAIR)) {
                     tvResultado.setText(subtrair());
 
-                }
+                } else if(opcaoSelecionada.equals(POTENCIACAO)) {
+                    tvResultado.setText(potenciacao());
 
+                } else if(opcaoSelecionada.equals(POTENCIADE10)) {
+                    tvResultado.setText(potenciaDe10());
+
+                } else if (opcaoSelecionada.equals(RAIZ)) ;
+                tvResultado.setText(raiz());
 
             }
 
@@ -114,7 +120,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -163,6 +168,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             tvResultado.setHint("");
         }
 
+        else if (adapterView.getItemAtPosition(i).toString().equals(POTENCIADE10)) {
+            imgOperacao.setImageDrawable(getResources().getDrawable(R.drawable.potencia,getTheme()));
+            edtOperando1.setHint("");
+            edtOperando2.setHint("");
+            tvResultado.setHint("");
+
+        }
+
+        else if (adapterView.getItemAtPosition(i).toString().equals(POTENCIACAO)){
+            imgOperacao.setImageDrawable(getResources().getDrawable(R.drawable.potenciacao,getTheme()));
+            edtOperando1.setHint("");
+            edtOperando2.setHint("");
+            tvResultado.setHint("");
+        }
+
 
     }
 
@@ -180,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
      String resultado = Integer.toString(res);
 
-     return "O resultado da operação matemática é: " + resultado;
+     return "O resultado é: " + resultado;
 
     }
 
@@ -192,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         String resultado = Integer.toString(res);
 
-        return "O resultado da operação matemática é: " + resultado;
+        return "O resultado é: " + resultado;
 
 
     }
@@ -205,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         String resultado = Integer.toString(res);
 
-        return "O resultado da operação matemática é: " + resultado;
+        return "O resultado é: " + resultado;
 
     }
 
@@ -217,8 +237,43 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         String resultado = Integer.toString(res);
 
-        return "O resultado da operação matemática é: " + resultado;
+        return "O resultado é: " + resultado;
     }
+
+
+    private String raiz (){
+
+        int n1 = Integer.valueOf(edtOperando1.getText().toString());
+        int resultado = (int) Math.sqrt(n1);
+
+        return "O resultado é: " + resultado;
+
+
+    }
+
+    private String potenciaDe10 (){
+
+        Double n1 = Double.parseDouble(edtOperando1.getText().toString());
+        Double res = Math.pow(n1,DEZ);
+
+        return "O resultado da expressão: " + res;
+
+
+    }
+
+    private String potenciacao () {
+
+        double n1 = Double.valueOf(edtOperando1.getText().toString()).intValue();
+        double n2 = Double.valueOf(edtOperando2.getText().toString()).intValue();
+        double res = Math.pow(n1, n2);
+
+        String resultado = Double.toString(res);
+
+        return "O resultado da operação matemática é: " + resultado;
+
+
+    }
+
 
 }
 

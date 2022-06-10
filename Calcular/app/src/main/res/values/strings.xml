@@ -6,7 +6,11 @@
         <item> Multiplicar </item>
         <item> Somar </item>
         <item> Subtrair </item>
-        <item> Raiz </item>
+        <item> Raíz </item>
+        <item> Elevado </item>
+        <item> Potência de 10 </item>
+        <item> Logaritmo </item>
+        <item> Potenciação </item>
 
     </string-array>
 </resources>
