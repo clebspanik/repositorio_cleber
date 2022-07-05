@@ -31,7 +31,11 @@ public class CircunferenciaTest {
         boolean x =  raio > 0;
 
         assertTrue(x);
-        //assertEquals(true, raio > 0);
+        /*assertEquals(true, raio > 0);
+        O método assertEquals (que será exemplificado neste tutorial) é
+        um método que pode ser implementado de várias formas diferentes.
+        Ele recebe como parâmetro o resultado do método que está sendo testado e
+        o resultado esperado pelo desenvolvedor caso o método testado esteja correto*/
     }
 
     @Test

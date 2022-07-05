@@ -9,6 +9,10 @@ public abstract class Forma {
         numeroDemedidas = new double[numMedidas];
     }
 
+    public Forma() {
+
+    }
+
 
     public double getMedida(int posicao){
 
