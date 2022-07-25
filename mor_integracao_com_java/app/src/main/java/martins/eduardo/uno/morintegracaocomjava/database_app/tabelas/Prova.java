@@ -18,7 +18,7 @@ public class Prova {
 
     public Prova (Pergunta tbl_Prova) {
         this.id            = tbl_Prova.getId();
-        this.disciplina     = tbl_Prova.getDisciplina();
+
 
     }
 
