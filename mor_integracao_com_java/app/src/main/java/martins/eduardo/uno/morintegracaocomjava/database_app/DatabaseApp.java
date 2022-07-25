@@ -5,14 +5,17 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.RoomDatabase;
+
 import androidx.room.TypeConverters;
-import androidx.sqlite.db.SupportSQLiteDatabase;
+
 
 import java.util.concurrent.Executors;
 
-import martins.eduardo.uno.morintegracaocomjava.database_app.converter.Converters;
+
+import martins.eduardo.uno.morintegracaocomjava.database_app.converter.Converters;p
 
 @TypeConverters({Converters.class})
+
 
 public abstract class DatabaseApp extends RoomDatabase {
 
