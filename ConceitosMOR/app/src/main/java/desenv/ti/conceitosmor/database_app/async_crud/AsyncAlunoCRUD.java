@@ -29,6 +29,14 @@ public class AsyncAlunoCRUD extends AsyncTask<Aluno, Integer, List<Aluno>> {
         dbCallBack                     = new WeakReference(callBack);
     }
 
+    public AsyncAlunoCRUD(Context context){
+        this.dbOperations              = UtilsApp.DataBaseCrudOperations.CREATE;
+        this.contextActivityOrFragment = context;
+        dbCallBack                     = null;
+    }
+
+
+
     @Override
     protected List<Aluno> doInBackground(Aluno... alunos) {
         try{
@@ -69,8 +77,8 @@ public class AsyncAlunoCRUD extends AsyncTask<Aluno, Integer, List<Aluno>> {
 
         if(dbOperations == UtilsApp.DataBaseCrudOperations.CREATE
                 || dbOperations == UtilsApp.DataBaseCrudOperations.READ) {
-            IAlunoDbCallback callBack = dbCallBack.get();
-            if (callBack != null) {
+            if (dbCallBack != null) {
+                IAlunoDbCallback callBack = dbCallBack.get();
                 callBack.getAlunoFromDB(alunos);
             }
         }
